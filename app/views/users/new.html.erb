@@ -1,0 +1,33 @@
+<h2>Sign up</h2>
+
+<div class="row">
+    <div class="col-md-8">
+        <%= form_for @user do |f| %>
+            <!--handle errors-->
+            <% if @user.errors.any? %>
+                <div class="alert alert-danger">
+                    <h4><%= pluralize(@user.errors.count, "error") %></h4>
+                    <ul>
+                        <% @user.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+            <!--fill out the form-->
+            <!--name-->
+            <%= f.label :name %>
+            <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: "Enter name" %>
+            <!--email-->
+            <%= f.label :email %>
+            <%= f.text_field :email, class: 'form-control', placeholder: "Enter email" %>
+            <!--password-->
+            <%= f.label :password %>
+            <%= f.text_field :password, class: 'form-control', placeholder: "Enter password" %>
+            <!--confirm button-->
+            <div class="form-group">
+                <%= f.submit "Sign Up", class: 'btn bth-success' %>
+            </div>
+        <% end %>
+    </div>    
+</div>
